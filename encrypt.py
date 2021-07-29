@@ -3,7 +3,12 @@ from Cryptodome.PublicKey import RSA
 from Cryptodome.Random import get_random_bytes
 from Cryptodome.Cipher import AES, PKCS1_OAEP
 
-path = input("Enter a file to encrypt: ")
+import argparse
+parser = argparse.ArgumentParser(description='RSA encryption python3 version.')
+parser.add_argument('path', metavar='file', type=str, help='the file to be encrypted')
+args = parser.parse_args()
+
+path = args.path
 try:
     f = open(path, 'r')
     data = f.read().encode("utf-8")
